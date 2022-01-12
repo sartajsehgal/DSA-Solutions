@@ -6,14 +6,9 @@ public:
         for(int i=0;i<nums.size();i++)
         {
             sum+=nums[i];
-            if(sum>mx)
-            {
-                mx=max(mx,sum);
-            }
+            mx=max(mx,sum);
             if(sum<0)
-            {
                 sum=0;
-            }
         }
         return mx;
     }
