@@ -13,23 +13,9 @@ public:
     ListNode* deleteDuplicates(ListNode* head) {
         if(head==NULL or head->next==NULL)
             return head;
-        ListNode* ptr=head;
-        ListNode* slow=head;
-        while(ptr!=NULL)
-        {
-            if(ptr->val==slow->val)
-            {
-                ptr=ptr->next;
-            }
-            else
-            {
-                slow->next=ptr;
-                slow=slow->next;
-                ptr=ptr->next;
-            }
-        }
-        if(slow->next!=NULL)
-            slow->next=NULL;
+        head->next=deleteDuplicates(head->next);
+        if(head->val==head->next->val)
+            return head->next;
         return head;
     }
 };
