@@ -23,7 +23,7 @@ class Solution{
                 }
                 if(j==0)
                 {
-                    dp[i][j]=1;
+                    dp[i][j]=pow(2,zero);
                 }
             }
         }
@@ -41,7 +41,7 @@ class Solution{
                 }
             }
         }
-        return dp[n][sum]%1000000007+pow(2,zero)-1;
+        return dp[n][sum]%mod;
 	}
 	  
 };
