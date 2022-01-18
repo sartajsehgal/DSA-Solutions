@@ -26,7 +26,6 @@ public:
                 if(j==0)
                 {
                     dp[i][j]=1;
-                    // dp[i][j]=1;
                 }
             }
         }
@@ -34,13 +33,13 @@ public:
         {
             for(int j=1;j<subsum+1;j++)
             {
-                if(nums[i-1]<=j and nums[i-1]!=0)
+                if(nums[i-1]>j or nums[i-1]==0)
                 {
-                    dp[i][j]=dp[i-1][j] + dp[i-1][j-nums[i-1]];
+                    dp[i][j]=dp[i-1][j];
                 }
                 else
                 {
-                    dp[i][j]=dp[i-1][j];
+                    dp[i][j]=dp[i-1][j] + dp[i-1][j-nums[i-1]];
                 }
             }
         }
