@@ -1,9 +1,8 @@
 class Solution {
 public:
-    vector<string> letterCasePermutation(string str) {
+    vector<string> letterCasePermutation(string s) {
         vector<string> ans;
-        ans.push_back(str);
-        string s=str;
+        ans.push_back(s);
         for(int i=0;i<s.length();i++)
         {
             if(s[i]>='a' and s[i]<='z')
