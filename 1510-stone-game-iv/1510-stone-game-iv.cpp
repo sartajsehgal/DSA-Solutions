@@ -1,27 +1,18 @@
 class Solution {
 public:
     bool winnerSquareGame(int n) {
-        unordered_map<int,bool> mp;
-        return helper(n,mp);
-    }
-    
-    bool helper(int n,unordered_map<int,bool>& mp)
-    {
-        if(mp.count(n))
+        vector<bool> dp(n+1,false);
+        for(int i=0;i<n+1;i++)
         {
-            return mp[n];
-        }
-        int sq_root=floor(sqrt(n));
-        for(int i=1;i<=sq_root;i++)
-        {
-            if(!helper(n-i*i,mp))
+            for(int j=1;j*j<=i;j++)
             {
-                mp[n]=true;
-                return true;
+                if(!dp[i-j*j])
+                {
+                    dp[i]=true;
+                    break;
+                }
             }
         }
-        mp[n]=false;
-        return false;
+        return dp[n];
     }
-    
 };
