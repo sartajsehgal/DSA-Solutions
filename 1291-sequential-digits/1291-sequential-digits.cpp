@@ -1,49 +1,20 @@
 class Solution {
 public:
     vector<int> sequentialDigits(int low, int high) {
+        int possible_vals[]={12,23,34,45,56,67,78,89,
+                            123,234,345,456,567,678,789,
+                            1234,2345,3456,4567,5678,6789,
+                            12345,23456,34567,45678,56789,
+                            123456,234567,345678,456789,
+                            1234567,2345678,3456789,
+                            12345678,23456789,
+                            123456789};
         vector<int> ans;
-        int num=low;
-        int digits = (int)log10(low);
-        num = (int)(num / pow(10, digits));
-        helper(low,high,ans,num);
+        for(int val:possible_vals)
+        {
+            if(val>=low and val<=high)
+                ans.push_back(val);
+        }
         return ans;
-    }
-    
-    void helper(int low, int high, vector<int>& ans, int n)
-    {
-        //cout<<"n: "<<n<<endl;
-        if(n>high)
-            return;
-        if(n>=low and n<=high)
-        {
-            ans.push_back(n);
-        }
-        string num=to_string(n);
-        if(num.length()==1 or num[num.length()-1]=='9')
-        {
-            int n=num.length()+1;
-            string str="";
-            for(int i=1;i<=n;i++)
-            {
-                if(i<=9)
-                    str+=to_string(i);
-                else
-                    return;
-            }
-            num.clear();
-            num=str;
-            //cout<<"1:   "<<num<<endl;
-        }
-        else
-        {
-            //cout<<num<<endl;
-            for(int i=0;i<num.length();i++)
-            {
-                num[i]=num[i]+1;
-            }
-            //cout<<"2:   "<<num<<endl;
-        }
-        // cout<<num<<endl;
-        helper(low,high,ans,stoi(num));
     }
 };
