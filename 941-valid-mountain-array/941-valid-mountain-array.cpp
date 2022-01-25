@@ -3,24 +3,25 @@ public:
     bool validMountainArray(vector<int>& arr) {
         if(arr.size()<3)
             return false;
-        bool inc=true,dec=false;
+        for(int i=arr.size()-1;i>0;i--)
+        {
+            arr[i]=arr[i]-arr[i-1];
+        }
+        if(arr[1]<0)
+            return false;
+        int first_neg=-1;
         for(int i=1;i<arr.size();i++)
         {
-            if(arr[i]==arr[i-1])
+            if(arr[i]==0)
                 return false;
-            if(i==1 and arr[i-1]>arr[i])
-                return false;
-            if(inc and arr[i-1]>arr[i])
-            {
-                inc=false;
-                dec=true;
-            }
-            else if(dec and arr[i]>arr[i-1])
+            if(arr[i]<0 and first_neg==-1)
+                first_neg=i;
+            else if(arr[i]>0 and first_neg!=-1)
             {
                 return false;
             }
         }
-        if(!dec)
+        if(first_neg==-1)
             return false;
         return true;
     }
