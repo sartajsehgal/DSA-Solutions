@@ -12,19 +12,44 @@
 class Solution {
 public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        vector<int> tree1;
+        vector<int> tree2;
+        getVals(root1,tree1);
+        getVals(root2,tree2);
         vector<int> ans;
-        add_elements(root1,ans);
-        add_elements(root2,ans);
-        sort(ans.begin(),ans.end());
+        int i=0,j=0;
+        while(i<tree1.size() and j<tree2.size())
+        {
+            if(tree1[i]<tree2[j])
+            {
+                ans.push_back(tree1[i]);
+                i++;
+            }
+            else
+            {
+                ans.push_back(tree2[j]);
+                j++;
+            }
+        }
+        while(i<tree1.size())
+        {
+            ans.push_back(tree1[i]);
+            i++;
+        }
+        while(j<tree2.size())
+        {
+            ans.push_back(tree2[j]);
+            j++;
+        }
         return ans;
     }
     
-    void add_elements(TreeNode* root, vector<int>& ans)
+    void getVals(TreeNode *root, vector<int>& arr)
     {
         if(root==NULL)
             return;
-        add_elements(root->left,ans);
-        ans.push_back(root->val);
-        add_elements(root->right,ans);
+        getVals(root->left,arr);
+        arr.push_back(root->val);
+        getVals(root->right,arr);
     }
 };
