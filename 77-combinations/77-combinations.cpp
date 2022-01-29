@@ -12,6 +12,7 @@ public:
         if(comb.size()==k)
         {
             ans.push_back(comb);
+            return;
         }
         for(int i=idx;i<=n;i++)
         {
