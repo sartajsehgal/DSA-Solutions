@@ -15,30 +15,27 @@ public:
         vector<string> ans_new;
         for(string s:ans)
         {
-            stack<int> st;
-            bool flag=false;
-            for(char c:s)
-            {
-                if(c=='(')
-                {
-                    st.push(1);
-                }
-                else if(c==')' and !st.empty())
-                {
-                    st.pop();
-                }
-                else
-                {
-                    flag=true;
-                    break;
-                }
-            }
-            if(st.empty() and !flag)
-            {
+            if(isValid(s))
                 ans_new.push_back(s);
-            }
         }
         return ans_new;
+    }
+    
+    bool isValid(string str)
+    {
+        int sum=0;
+        for(char c:str)
+        {
+            if(c=='(')
+                sum++;
+            else
+                sum--;
+            if(sum<0)
+                return false;
+        }
+        if(sum==0)
+            return true;
+        return false;
     }
     
     void helper(string str, unordered_set<string>& ans, int n)
