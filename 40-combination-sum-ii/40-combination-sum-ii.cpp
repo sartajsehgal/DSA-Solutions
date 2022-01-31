@@ -10,11 +10,6 @@ public:
     
     void helper(vector<int>& candidates, int target, vector<vector<int>>& ans, vector<int>& comb, int n)
     {
-        for(int a:comb)
-        {
-            cout<<a<<" ";
-        }
-        cout<<endl;
         if(target<0)
             return;
         if(target==0)
