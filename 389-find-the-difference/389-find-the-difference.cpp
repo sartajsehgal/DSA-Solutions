@@ -1,17 +1,15 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        unordered_map<char,int> mp;
+        int xo=0;
         for(char c:s)
         {
-            mp[c]++;
+            xo^=c;
         }
         for(char c:t)
         {
-            if(!mp.count(c) or mp[c]==0)
-                return c;
-            mp[c]--;
+            xo^=c;
         }
-        return 'a';
+        return xo;
     }
 };
