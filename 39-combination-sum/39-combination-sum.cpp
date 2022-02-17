@@ -1,29 +1,33 @@
 class Solution {
+private:
+    set<vector<int>> st;
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        sort(candidates.begin(),candidates.end());
+        vector<int> curr;
         vector<vector<int>> ans;
-        vector<int> comb;
-        //sort(candidates.begin(),candidates.end(),greater<int>());
-        helper(candidates,target,ans,comb,0);
+        helper(candidates,target,curr,0);
+        for(auto i:st)
+        {
+            ans.push_back(i);
+        }
         return ans;
     }
     
-    void helper(vector<int>& candidates, int target, vector<vector<int>>& ans, vector<int>& comb,int n)
+    void helper(vector<int>& candidates, int target, vector<int>& curr, int n)
     {
         if(target==0)
         {
-            ans.push_back(comb);
+            st.insert(curr);
             return;
         }
         if(target<0)
-        {
             return;
-        }
-        for(int i=n;i<candidates.size();i++)
+        for(int i=n;i<candidates.size() and target>=candidates[i];i++)
         {
-            comb.push_back(candidates[i]);
-            helper(candidates,target-candidates[i],ans,comb,i);
-            comb.pop_back();
+            curr.push_back(candidates[i]);
+            helper(candidates,target-candidates[i],curr,i);
+            curr.pop_back();
         }
     }
 };
