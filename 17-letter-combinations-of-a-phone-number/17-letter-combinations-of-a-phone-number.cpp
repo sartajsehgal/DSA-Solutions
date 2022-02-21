@@ -3,26 +3,21 @@ public:
     vector<string> letterCombinations(string digits) {
         if(digits=="")
             return {};
-        vector<string> ans({""});
-        vector<string> phone({"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"});
+        vector<string> phone{"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"},ans{""};
         for(auto digit:digits)
         {
-            vector<string> v(ans);
-            for(char c:phone[digit-'2'])
+            vector<string> temp;
+            string s=phone[digit-'2'];
+            for(int j=0;j<s.length();j++)
             {
-                for(auto val:v)
+                for(int k=0;k<ans.size();k++)
                 {
-                    val+=c;
-                    ans.push_back(val);
+                    cout<<ans[k]+s[j]<<endl;
+                    temp.push_back(ans[k]+s[j]);
                 }
             }
+            swap(ans,temp);
         }
-        vector<string> fin;
-        for(string s:ans)
-        {
-            if(s.length()==digits.length())
-                fin.push_back(s);
-        }
-        return fin;
+        return ans;
     }
 };
