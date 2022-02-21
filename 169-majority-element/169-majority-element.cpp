@@ -5,12 +5,8 @@ public:
         for(int num : nums)
         {
             mp[num]++;
-        }
-        int n=nums.size();
-        for(auto x : mp)
-        {
-            if(x.second>floor(n/2))
-                return x.first;
+            if(mp[num]>floor(nums.size()/2))
+                return num;
         }
         return 0;
     }
