@@ -4,22 +4,19 @@ public:
         if(s1.length()>s2.length())
             return false;
         vector<int> freq(26,0);
-        for(char c:s1)
+        vector<int> freq1(26,0);
+        for(int i=0;i<s1.length();i++)
         {
-            freq[c-'a']++;
+            freq[s1[i]-'a']++;
+            freq1[s2[i]-'a']++;
         }
-        for(int i=0;i<s2.length()-s1.length()+1;i++)
+        for(int i=0;i<s2.length()-s1.length();i++)
         {
-            vector<int> freq1(26,0);
-            for(int j=i;j<i+s1.length();j++)
-            {
-                //cout<<s2[j];
-                freq1[s2[j]-'a']++;
-            }
-            //cout<<endl;
             if(freq==freq1)
                 return true;
+            freq1[s2[i]-'a']--;
+            freq1[s2[i+s1.length()]-'a']++;
         }
-        return false;
+        return (freq1==freq);
     }
 };
