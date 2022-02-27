@@ -34,7 +34,6 @@ public:
             }
             else
             {
-                cout<<ptr->val<<" ";
                 avg+=ptr->val;
                 i++;
                 if(ptr->left)
