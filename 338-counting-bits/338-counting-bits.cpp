@@ -1,22 +1,11 @@
 class Solution {
 public:
     vector<int> countBits(int n) {
-        vector<int> ans;
-        for(int i=0;i<=n;i++)
+        vector<int> ans(n+1,0);
+        for(int i=1;i<=n;i++)
         {
-            ans.push_back(count_ones(i));
+            ans[i]=ans[i/2]+i%2;
         }
         return ans;
-    }
-    
-    int count_ones(int n)
-    {
-        int ones=0;
-        while(n!=0)
-        {
-            ones += (n & 1);
-            n = n >> 1;
-        }
-        return ones;
     }
 };
