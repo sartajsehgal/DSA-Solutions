@@ -13,7 +13,7 @@ public:
         }
         sort(arr.begin(),arr.end());
         int n=arr.size();
-        vector<int> dp(n+1,-1);
+        vector<int> dp(n,-1);
         return helper(arr,n-1,dp);
     }
     
