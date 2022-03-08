@@ -13,14 +13,12 @@ public:
                 bool flag=true;
                 for(int k=i;k<j;k++)
                 {
-                    //cout<<nums[k]<<" ";
                     if(nums[k+1]-nums[k]!=diff)
                     {
                         flag=false;
                         break;
                     }
                 }
-                //cout<<endl;
                 if(flag)
                     count++;
             }
