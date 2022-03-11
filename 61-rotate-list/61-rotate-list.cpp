@@ -13,7 +13,6 @@ public:
     ListNode* rotateRight(ListNode* head, int k) {
         if(!head)
             return head;
-        ListNode *dummy = new ListNode();
         ListNode *ptr = head;
         vector<int> arr;
         while(ptr!=NULL)
@@ -29,13 +28,13 @@ public:
             arr.pop_back();
             arr.insert(arr.begin(),a);
         }
-        ptr=dummy;
+        ptr=head;
         for(int i=0;i<arr.size();i++)
         {
-            ListNode *temp=new ListNode(arr[i]);
-            ptr->next=temp;
+            //cout<<arr[i]<<" ";
+            ptr->val=arr[i];
             ptr=ptr->next;
         }
-        return dummy->next;
+        return head;
     }
 };
