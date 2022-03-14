@@ -21,7 +21,6 @@ public:
         }
         if(curr!="")
             v.push_back(curr);
-        //"/home/../w//.../s/../ada/./../da//"
         for(string i:v)
         {
             //cout<<i<<", ";
