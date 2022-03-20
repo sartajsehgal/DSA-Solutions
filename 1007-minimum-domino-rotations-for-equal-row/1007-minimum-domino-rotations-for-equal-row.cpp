@@ -1,55 +1,21 @@
 class Solution {
 public:
     int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
-        int count=0;
-        unordered_map<int,int> top_f,bottom_f;
-        for(int i=0;i<tops.size();i++)
+        int n=tops.size();
+        int count_tops[7]={0},count_bottoms[7]={0},count_same[7]={0};
+        for(int i=0;i<n;i++)
         {
-            top_f[tops[i]]++;
-            bottom_f[bottoms[i]]++;
+            count_tops[tops[i]]++;
+            count_bottoms[bottoms[i]]++;
+            if(tops[i]==bottoms[i])
+                count_same[tops[i]]++;
         }
-        int max_top,max_bottom,max_val_top=0,max_val_bottom=0;
-        for(auto x:top_f)
+        for(int i=1;i<=6;i++)
         {
-            if(x.second>max_val_top)
+            if(count_tops[i]+count_bottoms[i]-count_same[i]==n)
             {
-                max_val_top=x.second;
-                max_top=x.first;
+                return n-max(count_tops[i],count_bottoms[i]);
             }
-        }
-        for(auto x:bottom_f)
-        {
-            if(x.second>max_val_bottom)
-            {
-                max_val_bottom=x.second;
-                max_bottom=x.first;
-            }
-        }
-        if(max_val_top>=max_val_bottom)
-        {
-            for(int i=0;i<tops.size();i++)
-            {
-                if(tops[i]!=max_top and bottoms[i]==max_top)
-                {
-                    count++;
-                }
-                else if(tops[i]!=max_top and bottoms[i]!=max_top)
-                    return -1;
-            }
-            return count;
-        }
-        else
-        {
-            for(int i=0;i<bottoms.size();i++)
-            {
-                if(bottoms[i]!=max_bottom and tops[i]==max_bottom)
-                {
-                    count++;
-                }
-                else if(bottoms[i]!=max_bottom and tops[i]!=max_bottom)
-                    return -1;
-            }
-            return count;
         }
         return -1;
     }
