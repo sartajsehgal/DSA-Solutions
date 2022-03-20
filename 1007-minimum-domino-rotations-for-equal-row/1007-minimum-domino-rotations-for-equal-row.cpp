@@ -25,11 +25,6 @@ public:
                 max_bottom=x.first;
             }
         }
-        // if(max_top>=max_bottom and bottom_f[max_top]>=bottoms.size()-max_val_top)
-        //     return bottoms.size()-max_val_top;
-        // if(max_bottom>max_top and top_f[max_bottom]>=tops.size()-max_val_bottom)
-        //     return tops.size()-max_val_bottom;
-        // return -1;
         if(max_val_top>=max_val_bottom)
         {
             for(int i=0;i<tops.size();i++)
