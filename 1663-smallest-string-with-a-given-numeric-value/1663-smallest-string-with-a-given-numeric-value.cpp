@@ -2,7 +2,7 @@ class Solution {
 public:
     string getSmallestString(int n, int k) {
         string ans="";
-        while(n>0 and k>0)
+        while(n>0)
         {
             n--;
             for(int i=25;i>=0;i--)
