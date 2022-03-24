@@ -5,17 +5,12 @@ public:
         int count=0,l=0,r=people.size()-1;
         while(l<=r)
         {
+            count++;
             if(people[l]+people[r]<=limit)
             {
                 l++;
-                r--;
-                count++;
             }
-            else if(people[r]<=limit)
-            {
-                r--;
-                count++;
-            }
+            r--;
         }
         return count;
     }
