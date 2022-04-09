@@ -1,10 +1,7 @@
-class compare {
-  public:
-    bool operator()(const pair<int,int>& p1, const pair<int,int>& p2)
-    {
-        return p1.second>p2.second;
-    }
-};
+bool compare(pair<int,int>& p1,pair<int,int> p2)
+{
+    return p1.second>p2.second;
+}
 
 class Solution {
 public:
@@ -14,19 +11,16 @@ public:
         {
             freq[num]++;
         }
-        priority_queue<pair<int,int>, vector<pair<int,int>>, compare> pq;
-        for(auto val:freq)
+        vector<pair<int,int>> v;
+        for(auto f:freq)
         {
-            pq.push(val);
-            if(pq.size()>k)
-                pq.pop();
+            v.push_back(f);
         }
+        sort(v.begin(),v.end(),compare);
         vector<int> ans;
         for(int i=0;i<k;i++)
         {
-            int a=pq.top().first;
-            ans.push_back(a);
-            pq.pop();
+            ans.push_back(v[i].first);
         }
         return ans;
     }
