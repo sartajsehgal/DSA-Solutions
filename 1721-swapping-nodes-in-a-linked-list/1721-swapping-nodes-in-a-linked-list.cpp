@@ -11,9 +11,8 @@
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-        ListNode *root=new ListNode(0,head);
-        ListNode *k_from_beg=root;
-        ListNode *k_from_end=root;
+        ListNode *k_from_beg=head;
+        ListNode *k_from_end=head;
         ListNode *fast=head;
         for(int i=1;i<k;i++)
         {
@@ -25,9 +24,9 @@ public:
             fast=fast->next;
             k_from_end=k_from_end->next;
         }
-        int val=k_from_beg->next->val;
-        k_from_beg->next->val=k_from_end->next->val;
-        k_from_end->next->val=val;
+        int val=k_from_beg->val;
+        k_from_beg->val=k_from_end->val;
+        k_from_end->val=val;
         return head;
         
     }
