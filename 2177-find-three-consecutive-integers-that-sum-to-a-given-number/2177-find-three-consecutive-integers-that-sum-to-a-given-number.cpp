@@ -1,11 +1,10 @@
 class Solution {
 public:
     vector<long long> sumOfThree(long long num) {
-        double n=(num/3.0)-1;
-        if(floor(n)==n)
+        if(num%3==0)
         {
-            long long nn=floor(n);
-            return {nn,nn+1,nn+2};
+            long long n=num/3;
+            return {n-1,n,n+1};
         }
         return {};
     }
