@@ -10,8 +10,7 @@
  * };
  */
 class BSTIterator {
-    vector<int> v;
-    int i=0;
+    stack<int> s;
 public:
     BSTIterator(TreeNode* root) {
         inorder(root);
@@ -21,17 +20,19 @@ public:
     {
         if(root==NULL)
             return;
-        inorder(root->left);
-        v.push_back(root->val);
         inorder(root->right);
+        s.push(root->val);
+        inorder(root->left);
     }
     
     int next() {
-        return v[i++];
+        int top = s.top();
+        s.pop();
+        return top;
     }
     
     bool hasNext() {
-        if(i<v.size())
+        if(!s.empty())
             return true;
         return false;
     }
