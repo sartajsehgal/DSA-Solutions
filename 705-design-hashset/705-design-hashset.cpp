@@ -1,9 +1,9 @@
 class MyHashSet {
 public:
     vector<vector<int>> v;
-    int prime=123;
+    int prime=100;
     MyHashSet() {
-        for(int i=0;i<123;i++)
+        for(int i=0;i<100;i++)
         {
             v.push_back({});
         }
