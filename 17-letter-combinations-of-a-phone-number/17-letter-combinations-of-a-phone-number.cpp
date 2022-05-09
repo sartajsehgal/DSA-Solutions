@@ -12,7 +12,6 @@ public:
             {
                 for(int k=0;k<ans.size();k++)
                 {
-                    cout<<ans[k]+s[j]<<endl;
                     temp.push_back(ans[k]+s[j]);
                 }
             }
