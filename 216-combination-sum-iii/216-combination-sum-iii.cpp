@@ -1,26 +1,29 @@
 class Solution {
+private:
+    vector<int> curr;
+    vector<vector<int>> ans;
 public:
     vector<vector<int>> combinationSum3(int k, int n) {
-        vector<vector<int>> ans;
-        vector<int> comb;
-        helper(k,n,ans,comb,1);
+        vector<int> nums;
+        for(int i=1;i<=9;i++)
+        {
+            nums.push_back(i);
+        }
+        solve(nums,k,n,0);
         return ans;
     }
     
-    void helper(int k, int n, vector<vector<int>>& ans, vector<int>& comb, int itr)
+    void solve(vector<int>& nums, int k, int n, int idx)
     {
-        if(n<0 or comb.size()>k)
-            return;
-        if(n==0 and comb.size()==k)
+        if(n==0 and curr.size()==k)
         {
-            ans.push_back(comb);
-            return;
+            ans.push_back(curr);
         }
-        for(int i=itr;i<=9;i++)
+        for(int i=idx;n>=nums[i] and i<nums.size();i++)
         {
-            comb.push_back(i);
-            helper(k,n-i,ans,comb,i+1);
-            comb.pop_back();
+            curr.push_back(nums[i]);
+            solve(nums,k,n-nums[i],i+1);
+            curr.pop_back();
         }
     }
 };
