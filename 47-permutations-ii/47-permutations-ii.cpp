@@ -1,32 +1,27 @@
 class Solution {
-private:
-    set<vector<int>> s;
 public:
+    vector<vector<int>> ans;
+    set<vector<int>> s;
     vector<vector<int>> permuteUnique(vector<int>& nums) {
-        vector<vector<int>> ans;
-        sort(nums.begin(),nums.end());
         helper(nums,0);
-        for(auto i:s)
+        for(auto x:s)
         {
-            ans.push_back(i);
+            ans.push_back(x);
         }
         return ans;
     }
     
-    void helper(vector<int>& nums,int n)
+    void helper(vector<int>& nums, int idx)
     {
-        if(n>=nums.size())
+        if(idx>=nums.size() and s.find(nums)==s.end())
         {
-            if(s.find(nums)==s.end())
-            {
-                s.insert(nums);
-            }
+            s.insert(nums);
         }
-        for(int i=n;i<nums.size();i++)
+        for(int i=idx;i<nums.size();i++)
         {
-            swap(nums[i],nums[n]);
-            helper(nums,n+1);
-            swap(nums[i],nums[n]);
+            swap(nums[i],nums[idx]);
+            helper(nums,idx+1);
+            swap(nums[i],nums[idx]);
         }
     }
 };
